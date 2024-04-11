@@ -60,7 +60,7 @@ int ECHO = 10;
 
 //FOTORESISTOR
 int PINLCD = A0;
-int UMBRAL = 400;
+int UMBRAL = 1000;
 int LCD;
 
 void setup()
@@ -92,7 +92,7 @@ void loop()
   //FOTORESISTOR
   LCD = analogRead(PINLCD);
   
-  Serial.println(LCD);
+  // Serial.println(LCD);
   // Serial.println(d);
   
   // SERVO
