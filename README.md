@@ -72,6 +72,7 @@ void setup()
   pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT);
   digitalWrite(TRIG, LOW);
+  servo1.write(0);
 }
 
 void loop()
@@ -101,7 +102,7 @@ void loop()
   }
   
   if((d <= 30)&&(LCD <= UMBRAL)&&(LCD > 0)){
-    servo1.write(0);
+    servo1.write(60);
     delay(1000);
   }
   
