@@ -44,6 +44,9 @@ Junto con el fotoresistor forman un divisor de voltaje. Para ajustar y controlar
 La diferencia es cómo se conectan las resistencias en relación con el voltaje de referencia y la señal de entrada. La diferencia clave radica en si la resistencia se conecta a la fuente de voltaje positiva (pull-up) o a tierra (pull-down), determinando así el estado lógico predefinido del pin cuando no está activo.
 
 # 3. Hacer el programa realizando el IDE de Arduino (Código). Debe instalar la librería Servo para poner a funcionar el actuador.
+
+Los valores de UMBRAL y ZERO cambiaron dependiendo de la iluminacion del lugar, que afecta la resistencia y al fotoresistor
+
 ~~~
 // C++ code
 #include <Servo.h>
@@ -60,7 +63,8 @@ int ECHO = 10;
 
 //FOTORESISTOR
 int PINLCD = A0;
-int UMBRAL = 1000;
+int UMBRAL = 300; // En la sala mostrada este es el valor maximo
+int ZERO = 85; // En la sala mostrado, este era el valor minimo
 int LCD;
 
 void setup()
@@ -77,6 +81,7 @@ void setup()
 
 void loop()
 { 
+
   // ULTRASONIDO
   long t = 0; // tiempo que demora en llegar el eco
   long d = 0; // distancia en centimetros
@@ -92,8 +97,8 @@ void loop()
   //FOTORESISTOR
   LCD = analogRead(PINLCD);
   
-  // Serial.println(LCD);
-  // Serial.println(d);
+  Serial.println(LCD); // Para ver que luz percibe
+  Serial.println(d); // Para ver la distancia medida
   
   // SERVO
   if((d >= 80)&&(LCD > UMBRAL)){
@@ -101,12 +106,12 @@ void loop()
   	delay(1000);
   }
   
-  if((d <= 30)&&(LCD <= UMBRAL)&&(LCD > 0)){
+  if((d <= 30)&&(LCD <= UMBRAL)&&(LCD > ZERO)){
     servo1.write(60);
     delay(1000);
   }
   
-  if((d == 2)&&(LCD == 0 )){
+  if((d == 7)&&(LCD == ZERO)){
     delay(1000);
   }
 }
