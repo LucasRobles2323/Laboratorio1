@@ -119,7 +119,7 @@ Si se aumenta mucho, no tendremos la distancia en tiempo real y tendrá un gran 
 
 ## b. ¿Cuál es el rango de valores que se reciben del puerto A0? 
 
-0 a 1023
+0 a 1023 ($10$ bit)
 
 ## c.  ¿Qué pasa si la resistencia R1 cambia de valor, ¿cómo afecta el valor? ¿Qué valores de resistencia han usado? 
 Afecta la sensibilidad del fotoresistor, si la resistencia de R1 aumenta, al fotoresistor se le dificulta percibir la luz y si la resistencia de R1 disminuye, al fotoresistor se le facilita percibir la luz.
